@@ -20,16 +20,16 @@ export const EasterPage = () => {
       <img className="w-full h-full absolute object-cover" src="/easter/tulipfield.jpg" alt="" />
       <motion.img className='absolute bottom-0 h-72 w-72'
         src='easter/walking-chicken.gif'
-        animate={{x: ["-100vw","100vw"]}}
-        transition={{duration: 20, ease: "linear", repeat: Infinity}}
+        animate={{ x: ["-100vw", "100vw"] }}
+        transition={{ duration: 20, ease: "linear", repeat: Infinity }}
       />
       <div className="w-full max-w-2xl relative">
         <div className='flex'>
           <motion.img className='h-40 w-40'
-          src='easter/easter-egg.svg'
-          alt=''
-          animate={{x: [0,500], rotate: [0, 360]}}
-          transition={{duration: 3, ease: "easeInOut", repeat: Infinity, repeatType: "reverse"}}/> 
+            src='easter/easter-egg.svg'
+            alt=''
+            animate={{ x: [0, 500], rotate: [0, 360] }}
+            transition={{ duration: 3, ease: "easeInOut", repeat: Infinity, repeatType: "reverse" }} />
         </div>
         <div className="relative z-50 p-8 bg-white border border-gray-200 shadow-xl dark:bg-gray-800 dark:border-gray-700 rounded-3xl">
           <h1 className="mb-8 text-4xl font-bold text-center text-gray-800 dark:text-gray-100">Nedtelling til påskeferie</h1>
@@ -39,13 +39,13 @@ export const EasterPage = () => {
               {daysUntilEaster === 1 ? "dag" : "dager"} igjen!
             </p>
           </div>
-        {['top-6 left-6', 'top-6 right-6', 'bottom-6 right-6', 'bottom-6 left-6'].map((pos) => (
-          <img 
-            key={pos} 
-            src={"/easter/bow-ribbon.svg"} 
-            className={clsx("absolute max-h-14", pos)}
-          />
-        ))}
+          {['top-6 left-6', 'top-6 right-6', 'bottom-6 right-6', 'bottom-6 left-6'].map((pos) => (
+            <img
+              key={pos}
+              src={"/easter/bow-ribbon.svg"}
+              className={clsx("absolute max-h-14", pos)}
+            />
+          ))}
         </div>
       </div>
     </div>
