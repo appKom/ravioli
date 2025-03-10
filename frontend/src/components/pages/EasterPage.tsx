@@ -26,7 +26,7 @@ export const EasterPage = () => {
       <div className="w-full max-w-2xl relative">
         <div className='flex'>
           <motion.img className='h-40 w-40'
-          src='easter/easter-egg-1.svg'
+          src='easter/easter-egg.svg'
           alt=''
           animate={{x: [0,500], rotate: [0, 360]}}
           transition={{duration: 3, ease: "easeInOut", repeat: Infinity, repeatType: "reverse"}}/> 
