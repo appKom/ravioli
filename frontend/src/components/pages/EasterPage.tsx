@@ -24,13 +24,11 @@ export const EasterPage = () => {
         transition={{ duration: 20, ease: "linear", repeat: Infinity }}
       />
       <div className="w-full max-w-2xl relative">
-        <div className='flex'>
-          <motion.img className='h-40 w-40'
-            src='easter/easter-egg.svg'
-            alt=''
-            animate={{ x: [0, 500], rotate: [0, 360] }}
-            transition={{ duration: 6, ease: "easeInOut", repeat: Infinity, repeatType: "reverse" }} />
-        </div>
+        <motion.img className='h-40'
+          src='easter/easter-egg.svg'
+          alt=''
+          animate={{ x: [0, 500], rotate: [0, 360] }}
+          transition={{ duration: 6, ease: "easeInOut", repeat: Infinity, repeatType: "reverse" }} />
         <div className="relative z-50 p-8 bg-white border border-gray-200 shadow-xl dark:bg-gray-800 dark:border-gray-700 rounded-3xl">
           <h1 className="mb-8 text-4xl font-bold text-center text-gray-800 dark:text-gray-100">Nedtelling til påskeferie</h1>
           <div className='text-center'>
