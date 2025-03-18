@@ -18,7 +18,7 @@ export const EasterPage = () => {
     <div className="relative flex items-center justify-center h-full bg-gradient-to-b from-[#9acdf5] to-[#d1e3f1] dark:bg-none">
       {/* Background */}
       <img className="w-full h-full absolute object-cover" src="/easter/tulipfield.jpg" alt="" />
-      <motion.img className='absolute bottom-0 h-72 w-72'
+      <motion.img className='absolute bottom-0 max-h-40 max-w-40'
         src='easter/walking-chicken.gif'
         animate={{ x: ["-100vw", "100vw"] }}
         transition={{ duration: 20, ease: "linear", repeat: Infinity }}
