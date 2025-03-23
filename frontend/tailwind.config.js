@@ -31,7 +31,7 @@ module.exports = {
         },
         flicker: {
           '0%, 100%': { opacity: '1' },
-          '50%': { opacity: '0.85' },
+          '50%': { opacity: '0.9' },
         },
         scan: {
           '0%': { backgroundPosition: '0 0' },

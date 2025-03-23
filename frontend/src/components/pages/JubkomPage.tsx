@@ -18,7 +18,9 @@ export const JubkomPage = () => {
   return (
     <div className="h-full bg-black overflow-hidden">
       {/* CRT scanlines */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.15)_50%,transparent_50%)] bg-[length:100%_10px] animate-scan z-40" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.1)_50%,transparent_50%)] bg-[length:100%_10px] animate-scan z-40" />
+
+      {/* Flickering wrapper border */}
       <div className="animate-flicker h-full flex flex-col gap-24 items-center justify-center">
         <h1 className='font-glass text-white opacity-80 text-6xl'>
           {timeLeft.days} dager {timeLeft.hours} timer {timeLeft.minutes} minutter{' '}
@@ -29,9 +31,6 @@ export const JubkomPage = () => {
           <div className="opacity-80">
             <QRCode value="https://jubileum.online.ntnu.no" size={400} />
           </div>
-
-          {/* Flicker overlay */}
-          <div className="absolute inset-0 bg-black/10 animate-flicker pointer-events-none" />
         </div>
       </div>
     </div>
