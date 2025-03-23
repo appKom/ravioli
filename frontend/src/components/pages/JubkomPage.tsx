@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import QRCode from "react-qr-code";
 
 export const JubkomPage = () => {
   const targetDate = new Date("2026-02-16T00:00:00") // 16th of February 2026
@@ -15,11 +16,12 @@ export const JubkomPage = () => {
   const timeLeft = getTimeDiff(now, targetDate);
 
   return (
-    <div className="h-full bg-black overflow-hidden flex items-center justify-center">
+    <div className="h-full bg-black overflow-hidden flex flex-col gap-24 items-center justify-center">
       <h1 className='font-glass text-white text-6xl'>
         {timeLeft.days} dager {timeLeft.hours} timer {timeLeft.minutes} minutter{' '}
         {timeLeft.seconds} sekunder
       </h1>
+      <QRCode value="https://farfalle-ruby.vercel.app/" />
     </div>
   )
 }
