@@ -5,6 +5,11 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+@font-face {
+  font-family: 'glass';
+  src: url('/jubkom/glass.ttf') format('truetype');
+}
+
 * {
   box-sizing: border-box;
   margin: 0;

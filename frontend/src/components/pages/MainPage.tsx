@@ -14,6 +14,7 @@ import { EasterPage } from "./EasterPage";
 import clsx from "clsx";
 import { RavioliPage } from "./RavioliPage";
 import countdownToEaster from "../../lib/daysUntilEaster";
+import { JubkomPage } from "./JubkomPage";
 
 interface PageAbstract {
   component: ReactElement;
@@ -132,6 +133,12 @@ export const MainPage = () => {
         if (countdownToEaster() <= 70) return 1;
         else return 0;
       },
+      fullScreen: true,
+    },
+    {
+      component: <JubkomPage />,
+      duration: 200,
+      priority: () => 1.0,
       fullScreen: true,
     },
   ];
