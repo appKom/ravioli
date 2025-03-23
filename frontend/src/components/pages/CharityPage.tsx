@@ -33,16 +33,16 @@ export const CharityPage = () => {
       </div>
 
       {/* Title Section - Overlapping */}
-      <div className="absolute top-0 left-0 translate-x-8 translate-y-16 text-8xl font-bold text-white/10 uppercase">veldedighetsfest 2025</div>
+      <div className="absolute top-0 left-0 translate-x-8 translate-y-16 text-8xl font-bold text-white/15 uppercase">veldedighetsfest 2025</div>
 
       <div className="max-w-7xl mx-auto grid grid-cols-3 gap-8 mt-24">
         {/* QR Section - Spans 2 rows */}
-        <div className="bg-white/5 backdrop-blur-sm px-16 py-8 rounded-3xl border border-white/10 h-full row-span-2 col-span-2 relative z-10 w-max">
-          <p className="text-5xl font-bold tracking-tight">
+        <div className="bg-white/5 backdrop-blur-sm px-16 py-8 rounded-3xl border border-white/10 h-full row-span-2 col-span-2 relative z-10 w-max rotate-2 transition-transform">
+          <p className="text-6xl font-bold tracking-tight text-center">
             støtt mental helse
             <span className="text-online-yellow pl-0.5">!</span>
           </p>
-          <div className="bg-white p-6 rounded-2xl rotate-3 transition-transform mx-auto mt-16 w-max">
+          <div className="bg-white p-6 rounded-2xl mx-auto mt-8 mb-4 w-max">
             <img
               src="/charity/vipps.png"
               alt="Vipps QR Code"
@@ -54,9 +54,9 @@ export const CharityPage = () => {
         {/* Progress Section - Overlapping previous section */}
         {
           !isError && (
-            <div className="top-[225px] left-[960px] absolute w-[700px] h-max z-20 bg-online-blue/50 backdrop-blur-sm p-8 rounded-3xl border border-white/10 -rotate-2">
+            <div className="top-[200px] left-[960px] absolute w-[700px] h-max z-20 bg-online-blue/50 backdrop-blur-sm p-8 rounded-3xl border border-white/10 -rotate-2">
               <div className="space-y-4">
-                <h2 className="text-4xl font-bold">Opptjent så langt</h2>
+                <h2 className="text-4xl font-bold">opptjent så langt</h2>
                 {
                   isLoading ? (
                     <Oval
@@ -124,24 +124,26 @@ export const CharityPage = () => {
         }
 
         {/* Event Details - Offset from grid */}
-        <div className="absolute left-[925px] top-[600px] z-10 rotate-2">
+        <div className="absolute left-[925px] top-[575px] z-10 rotate-3">
           <div className="bg-white/5 backdrop-blur-sm p-8 rounded-3xl border border-white/10 w-96">
-            <h2 className="text-4xl font-bold mb-8">Når og hvor?</h2>
+            <h2 className="text-4xl font-bold mb-8">når og hvor
+              <span className="text-online-yellow pl-0.5">?</span>
+            </h2>
 
             <div className="space-y-6">
               <div className="flex items-start gap-4">
-                <Clock className="w-6 h-6 text-online-yellow mt-1" />
+                <Clock className="w-8 h-8 text-online-yellow mt-1" />
                 <div>
-                  <p className="text-lg">Lørdag, 29. mars</p>
-                  <p className="text-zinc-400">18:00 - 23:00</p>
+                  <p className="text-2xl">Lørdag, 29. mars</p>
+                  <p className="text-zinc-400 text-xl">18:00 - 23:00</p>
                 </div>
               </div>
 
               <div className="flex items-start gap-4">
-                <MapPin className="w-6 h-6 text-online-yellow mt-1" />
+                <MapPin className="w-8 h-8 text-online-yellow mt-1" />
                 <div>
-                  <p className="text-lg">R2</p>
-                  <p className="text-zinc-400">Realfagsbygget</p>
+                  <p className="text-2xl">R2</p>
+                  <p className="text-zinc-400 text-xl">Realfagsbygget</p>
                 </div>
               </div>
             </div>
