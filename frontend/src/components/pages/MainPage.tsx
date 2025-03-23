@@ -60,7 +60,7 @@ export const MainPage = () => {
     }, */
     {
       component: <ChristmasPage />,
-      duration: 30,
+      duration: 20,
       priority: () => {
         const today = new Date();
         const seasonStart = new Date(today.getFullYear(), 9, 1);
@@ -69,14 +69,7 @@ export const MainPage = () => {
         if (seasonStart <= today && today <= seasonEnd) return 1;
         else return 0;
       },
-    },
-    {
-      component: <EasterPage />,
-      duration: 30,
-      priority: () => {
-        if (countdownToEaster() <= 70) return 1;
-        else return 0;
-      },
+      fullScreen: true,
     },
     {
       component: <OnlineAppBlastPage />,
@@ -100,6 +93,7 @@ export const MainPage = () => {
         else if (hour >= 16) return (hour / 24) ** 2 * weight;
         else return 0;
       },
+      fullScreen: true,
     },
     {
       component: <PodcastPage />,
@@ -129,6 +123,15 @@ export const MainPage = () => {
       component: <RavioliPage />,
       duration: 20,
       priority: () => 0.01,
+      fullScreen: true,
+    },
+    {
+      component: <EasterPage />,
+      duration: 20,
+      priority: () => {
+        if (countdownToEaster() <= 70) return 1;
+        else return 0;
+      },
       fullScreen: true,
     },
   ];
