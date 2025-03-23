@@ -21,17 +21,13 @@ export const JubkomPage = () => {
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.1)_50%,transparent_50%)] bg-[length:100%_10px] animate-scan z-40" />
 
       {/* Flickering wrapper border */}
-      <div className="animate-flicker h-full flex flex-col gap-24 items-center justify-center">
-        <h1 className='font-glass text-white opacity-80 text-6xl'>
+      <div className="animate-flicker h-full flex flex-col gap-24 items-center justify-center opacity-90">
+        <h1 className='font-glass text-white text-6xl'>
           {timeLeft.days} dager {timeLeft.hours} timer {timeLeft.minutes} minutter{' '}
           {timeLeft.seconds} sekunder
         </h1>
-        <div className="relative overflow-hidden">
-          {/* QR code */}
-          <div className="opacity-80">
-            <QRCode value="https://jubileum.online.ntnu.no" size={400} />
-          </div>
-        </div>
+        {/* QR code */}
+        <QRCode value="https://jubileum.online.ntnu.no" size={400} />
       </div>
     </div>
   )
