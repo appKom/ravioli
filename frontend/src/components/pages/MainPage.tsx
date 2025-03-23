@@ -139,6 +139,7 @@ export const MainPage = () => {
       component: <JubkomPage />,
       duration: 200,
       priority: () => 1.0,
+      fullScreen: true,
     },
   ];
 
