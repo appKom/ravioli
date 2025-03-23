@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Calendar, Clock } from "lucide-react"
 
-export const AnniversaryPage = () => {
+export const JubkomPage = () => {
   const targetDate = new Date("2026-02-16T00:00:00") // 16th of February 2026
   const [timeLeft, setTimeLeft] = useState({
     days: 0,

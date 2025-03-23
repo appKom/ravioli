@@ -15,7 +15,7 @@ import { EasterPage } from "./EasterPage";
 import clsx from "clsx";
 import { RavioliPage } from "./RavioliPage";
 import countdownToEaster from "../../lib/daysUntilEaster";
-import { AnniversaryPage } from "./AnniversaryPage";
+import { JubkomPage } from "./JubkomPage";
 
 interface PageAbstract {
   component: ReactElement;
@@ -131,7 +131,7 @@ export const MainPage = () => {
       priority: () => 0.01,
     },
     {
-      component: <AnniversaryPage />,
+      component: <JubkomPage />,
       duration: 20,
       priority: () => 1.0,
     },
