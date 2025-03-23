@@ -107,3 +107,17 @@ export interface IEventAttendanceDetails {
   is_on_waitlist: boolean | null;
   what_place_is_user_on_wait_list: number | null;
 }
+
+export interface IBids {
+  numberOfDonations: number;
+  highestGoal: {
+    id: string;
+    goal: number;
+    description: string;
+  };
+  totalCollected: {
+    _sum: {
+      amount: number | null;
+    };
+  };
+}
