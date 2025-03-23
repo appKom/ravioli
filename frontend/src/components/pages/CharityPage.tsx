@@ -2,8 +2,10 @@ import { Clock, MapPin, Users } from "lucide-react"
 import { fetchBids } from "../../api/onLoveApi";
 import { useQuery } from "@tanstack/react-query";
 import { Oval } from 'react-loader-spinner'
+import { useState } from "react";
 
 const REFETCH_INTERVAL_MINUTES = 20; // how often to refetch bids
+const NUMBER_OF_BLINKING_LIGHTS = 30;
 
 export const CharityPage = () => {
   const { isLoading, isError, data } = useQuery({
@@ -12,11 +14,19 @@ export const CharityPage = () => {
     refetchInterval: 1000 * 60 * REFETCH_INTERVAL_MINUTES,
   });
 
+  // Generate random positions for blinking lights
+  const [blinkPositions] = useState<IBlink[]>(generateRandomPositions(NUMBER_OF_BLINKING_LIGHTS));
+
   return (
     <div className="h-full bg-zinc-900 text-white p-8 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-online-yellow/40 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-online-yellow/40 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+
+      {/* Randomly Placed Blinking Lights */}
+      {blinkPositions.map((blink, index) => (
+        <BlinkingLight key={index} top={blink.top} left={blink.left} duration={blink.duration} />
+      ))}
 
       <div className=" flex gap-6 items-center text-3xl">
         <img src="/charity/MentalHelse_logo_hvitgraa.png" alt="Mental Helse logo" className="w-[200px] opacity-70 absolute right-4 bottom-4" />
@@ -150,4 +160,34 @@ const formatNumber = (number?: number | null): string => {
 const getPercentage = (amount?: number | null, goal?: number): number => {
   if (!amount || !goal) return 0;
   return (amount / goal) * 100;
+}
+
+const BlinkingLight = ({ top, left, duration }: IBlink) => {
+  return (
+    <div
+      className="w-1 h-1 bg-online-yellow opacity-70 rounded-full animate-blink shadow-glow absolute"
+      style={{
+        top: `${top}%`,
+        left: `${left}%`,
+        animationDuration: `${duration}s`,
+      }}
+    />
+  );
+}
+
+const generateRandomPositions = (count: number) => {
+  const positions: IBlink[] = [];
+  for (let i = 0; i < count; i++) {
+    const top = Math.random() * 100;
+    const left = Math.random() * 100;
+    const duration = Math.random() * 2 + 1;
+    positions.push({ top, left, duration });
+  }
+  return positions;
+};
+
+interface IBlink {
+  top: number;
+  left: number;
+  duration: number;
 }
