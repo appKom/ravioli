@@ -132,7 +132,7 @@ export const MainPage = () => {
     },
     {
       component: <JubkomPage />,
-      duration: 20,
+      duration: 200,
       priority: () => 1.0,
     },
   ];
