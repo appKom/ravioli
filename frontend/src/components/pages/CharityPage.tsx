@@ -39,7 +39,7 @@ export const CharityPage = () => {
         {/* QR Section - Spans 2 rows */}
         <div className="bg-white/5 backdrop-blur-sm px-16 py-8 rounded-3xl border border-white/10 h-full row-span-2 col-span-2 relative z-10 w-max rotate-2 transition-transform">
           <p className="text-6xl font-bold tracking-tight text-center">
-            støtt mental helse
+            Støtt Mental Helse
             <span className="text-online-yellow pl-0.5">!</span>
           </p>
           <div className="bg-white p-6 rounded-2xl mx-auto mt-8 mb-4 w-max">
@@ -56,7 +56,7 @@ export const CharityPage = () => {
           !isError && (
             <div className="top-[200px] left-[960px] absolute w-[700px] h-max z-20 bg-online-blue/50 backdrop-blur-sm p-8 rounded-3xl border border-white/10 -rotate-2">
               <div className="space-y-4">
-                <h2 className="text-4xl font-bold">opptjent så langt</h2>
+                <h2 className="text-4xl font-bold">Opptjent så langt</h2>
                 {
                   isLoading ? (
                     <Oval
@@ -126,7 +126,7 @@ export const CharityPage = () => {
         {/* Event Details - Offset from grid */}
         <div className="absolute left-[925px] top-[575px] z-10 rotate-3">
           <div className="bg-white/5 backdrop-blur-sm p-8 rounded-3xl border border-white/10 w-96">
-            <h2 className="text-4xl font-bold mb-8">når og hvor
+            <h2 className="text-4xl font-bold mb-8">Når og hvor
               <span className="text-online-yellow pl-0.5">?</span>
             </h2>
 
