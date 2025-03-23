@@ -18,6 +18,7 @@ import countdownToEaster from "../../lib/daysUntilEaster";
 interface PageAbstract {
   component: ReactElement;
   duration: number;
+  fullScreen?: boolean;
 }
 
 interface PageSpecification extends PageAbstract {
@@ -75,7 +76,7 @@ export const MainPage = () => {
       priority: () => {
         if (countdownToEaster() <= 70) return 1;
         else return 0;
-      }
+      },
     },
     {
       component: <OnlineAppBlastPage />,
@@ -86,6 +87,7 @@ export const MainPage = () => {
       component: <BratPage />,
       duration: 20,
       priority: () => 0.02,
+      fullScreen: true,
     },
     {
       component: <NapkomPage />,
@@ -127,12 +129,15 @@ export const MainPage = () => {
       component: <RavioliPage />,
       duration: 20,
       priority: () => 0.01,
+      fullScreen: true,
     },
   ];
 
   const pages = preparePageSpecifications(pageSpecifications);
 
   const [currentComponentIndex, setCurrentComponentIndex] = useState(0);
+  const currentPage = pages[currentComponentIndex];
+
   const [opacity, setOpacity] = useState(1);
   const [millisecondsLeft, setMillisecondsLeft] = useState(
     pages[0].duration * 1000
@@ -207,11 +212,13 @@ export const MainPage = () => {
         "overflow-hidden dark:bg-[#111827] h-screen flex flex-col",
         import.meta.env.VITE_NODE_ENV !== "development" && "cursor-none"
       )}>
-        <Header
-          displayDuration={pages[currentComponentIndex].duration}
-          timeRemaining={millisecondsLeft / 1000}
-          nextPage={nextPage}
-        />
+        {!currentPage.fullScreen && (
+          <Header
+            displayDuration={currentPage.duration}
+            timeRemaining={millisecondsLeft / 1000}
+            nextPage={nextPage}
+          />
+        )}
         <div
           className="h-full"
           style={{ transition: "opacity 500ms", opacity }}
