@@ -16,6 +16,8 @@ module.exports = {
       animation: {
         swing: 'swing 5s ease-in-out infinite',
         driftOff: 'driftOff 6s linear infinite',
+        flicker: 'flicker 0.15s infinite',
+        scan: 'scan 0.2s linear infinite',
       },
       keyframes: {
         swing: {
@@ -26,6 +28,14 @@ module.exports = {
           '0%': { transform: 'translate(0)', opacity: '0' },
           '10%': { opacity: '1' },
           '100%': { transform: 'translate(400%, -200%) scale(0.75) rotate(-10deg)', opacity: '0' },
+        },
+        flicker: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.85' },
+        },
+        scan: {
+          '0%': { backgroundPosition: '0 0' },
+          '100%': { backgroundPosition: '0 10px' },
         },
       },
       backgroundImage: {
