@@ -4,6 +4,7 @@ module.exports = {
   theme: {
     fontFamily: {
       'cardo': ['cardo', 'sans-serif'],
+      'glass': ['glass', 'monospace'],
     },
     extend: {
       colors: {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-export const JubkomPage2 = () => {
+export const JubkomPage = () => {
   const targetDate = new Date("2026-02-16T00:00:00") // 16th of February 2026
   const [now, setNow] = useState(new Date());
 
