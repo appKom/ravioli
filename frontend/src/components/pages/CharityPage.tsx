@@ -42,11 +42,11 @@ export const CharityPage = () => {
             Støtt Mental Helse
             <span className="text-online-yellow pl-0.5">!</span>
           </p>
-          <div className="bg-white p-6 rounded-2xl mx-auto mt-8 mb-4 w-max">
+          <div className="bg-white rounded-2xl mx-auto mt-8 mb-4 w-max">
             <img
-              src="/charity/vipps.png"
+              src="/charity/vipps-qr.png"
               alt="Vipps QR Code"
-              className="w-[450px]"
+              className="w-[500px]"
             />
           </div>
         </div>
@@ -124,7 +124,7 @@ export const CharityPage = () => {
         }
 
         {/* Event Details - Offset from grid */}
-        <div className="absolute left-[925px] top-[575px] z-10 rotate-3">
+        <div className="absolute left-[1000px] top-[575px] z-10 rotate-3">
           <div className="bg-white/5 backdrop-blur-sm p-8 rounded-3xl border border-white/10 w-96">
             <h2 className="text-4xl font-bold mb-8">Når og hvor
               <span className="text-online-yellow pl-0.5">?</span>
