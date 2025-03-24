@@ -4,7 +4,6 @@ import { DarkModeProvider } from "../utils/DarkModeProvider";
 import { OnlineAppBlastPage } from "./OnlineAppBlastPage";
 import { ChristmasPage } from "./ChristmasPage";
 import { EventsPage } from "./EventsPage";
-import { VideoPage } from "./VideoPage";
 import { NapkomPage } from "./Napkom";
 import { BratPage } from "./BratPage";
 import { PodcastPage } from "./PodcastPage";
@@ -20,6 +19,7 @@ import { CharityPage } from "./CharityPage";
 interface PageAbstract {
   component: ReactElement;
   duration: number;
+  fullScreen?: boolean;
 }
 
 interface PageSpecification extends PageAbstract {
@@ -54,14 +54,14 @@ export const MainPage = () => {
       duration: 60,
       priority: () => 3,
     },
-    {
+    /* {
       component: <VideoPage pageDuration={60} />,
       duration: 60,
       priority: () => 0.5,
-    },
+    }, */
     {
       component: <ChristmasPage />,
-      duration: 30,
+      duration: 20,
       priority: () => {
         const today = new Date();
         const seasonStart = new Date(today.getFullYear(), 9, 1);
@@ -70,14 +70,7 @@ export const MainPage = () => {
         if (seasonStart <= today && today <= seasonEnd) return 1;
         else return 0;
       },
-    },
-    {
-      component: <EasterPage />,
-      duration: 30,
-      priority: () => {
-        if (countdownToEaster() <= 70) return 1;
-        else return 0;
-      }
+      fullScreen: true,
     },
     {
       component: <OnlineAppBlastPage />,
@@ -88,6 +81,7 @@ export const MainPage = () => {
       component: <BratPage />,
       duration: 20,
       priority: () => 0.02,
+      fullScreen: true,
     },
     {
       component: <NapkomPage />,
@@ -100,6 +94,7 @@ export const MainPage = () => {
         else if (hour >= 16) return (hour / 24) ** 2 * weight;
         else return 0;
       },
+      fullScreen: true,
     },
     {
       component: <PodcastPage />,
@@ -129,6 +124,16 @@ export const MainPage = () => {
       component: <RavioliPage />,
       duration: 20,
       priority: () => 0.01,
+      fullScreen: true,
+    },
+    {
+      component: <EasterPage />,
+      duration: 20,
+      priority: () => {
+        if (countdownToEaster() <= 70) return 1;
+        else return 0;
+      },
+      fullScreen: true,
     },
     {
       component: <CharityPage />,
@@ -140,6 +145,8 @@ export const MainPage = () => {
   const pages = preparePageSpecifications(pageSpecifications);
 
   const [currentComponentIndex, setCurrentComponentIndex] = useState(0);
+  const currentPage = pages[currentComponentIndex];
+
   const [opacity, setOpacity] = useState(1);
   const [millisecondsLeft, setMillisecondsLeft] = useState(
     pages[0].duration * 1000
@@ -214,11 +221,13 @@ export const MainPage = () => {
         "overflow-hidden dark:bg-[#111827] h-screen flex flex-col",
         import.meta.env.VITE_NODE_ENV !== "development" && "cursor-none"
       )}>
-        <Header
-          displayDuration={pages[currentComponentIndex].duration}
-          timeRemaining={millisecondsLeft / 1000}
-          nextPage={nextPage}
-        />
+        {!currentPage.fullScreen && (
+          <Header
+            displayDuration={currentPage.duration}
+            timeRemaining={millisecondsLeft / 1000}
+            nextPage={nextPage}
+          />
+        )}
         <div
           className="h-full"
           style={{ transition: "opacity 500ms", opacity }}
