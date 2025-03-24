@@ -15,6 +15,7 @@ module.exports = {
       animation: {
         swing: 'swing 5s ease-in-out infinite',
         driftOff: 'driftOff 6s linear infinite',
+        blink: 'blink 2s infinite',
       },
       keyframes: {
         swing: {
@@ -26,9 +27,16 @@ module.exports = {
           '10%': { opacity: '1' },
           '100%': { transform: 'translate(400%, -200%) scale(0.75) rotate(-10deg)', opacity: '0' },
         },
+        blink: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0' },
+        },
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+      },
+      boxShadow: {
+        glow: '0 0 10px 5px rgba(249, 183, 89, 0.7)',
       },
     },
   },

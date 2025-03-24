@@ -14,6 +14,7 @@ import { EasterPage } from "./EasterPage";
 import clsx from "clsx";
 import { RavioliPage } from "./RavioliPage";
 import countdownToEaster from "../../lib/daysUntilEaster";
+import { CharityPage } from "./CharityPage";
 
 interface PageAbstract {
   component: ReactElement;
@@ -133,6 +134,18 @@ export const MainPage = () => {
         else return 0;
       },
       fullScreen: true,
+    },
+    {
+      component: <CharityPage />,
+      duration: 30,
+      fullScreen: true,
+      priority: () => {
+        const today = new Date();
+        const seasonEnd = new Date(2025, 3, 30); // Veldedighetsfest 2025, 29. mars
+
+        if (today <= seasonEnd) return 3;
+        else return 0;
+      },
     },
   ];
 
