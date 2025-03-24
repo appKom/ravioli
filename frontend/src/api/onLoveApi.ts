@@ -1,7 +1,7 @@
 import { IBids } from "../lib/types";
 
 export const fetchBids = async (): Promise<IBids> => {
-  const apiUrl = '/api/get-bid';
+  const apiUrl = 'https://onlove.no/api/get-bid';
 
   try {
     const response = await fetch(apiUrl);

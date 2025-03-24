@@ -7,14 +7,5 @@ export default defineConfig({
   plugins: [react()],
   build: {
     outDir: 'build'
-  },
-  server: {
-    proxy: {
-      '/api': {
-        target: 'https://onlove.no',
-        changeOrigin: true,
-        rewrite: (path) => path,
-      },
-    },
-  },
+  }
 });
