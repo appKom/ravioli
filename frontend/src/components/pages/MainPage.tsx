@@ -137,8 +137,15 @@ export const MainPage = () => {
     },
     {
       component: <CharityPage />,
-      duration: 2000,
-      priority: () => 0.01,
+      duration: 30,
+      fullScreen: true,
+      priority: () => {
+        const today = new Date();
+        const seasonEnd = new Date(2025, 3, 30); // Veldedighetsfest 2025, 29. mars
+
+        if (today <= seasonEnd) return 3;
+        else return 0;
+      },
     },
   ];
 

@@ -35,7 +35,7 @@ export const CharityPage = () => {
       {/* Title Section - Overlapping */}
       <div className="absolute top-0 left-0 translate-x-8 translate-y-16 text-8xl font-bold text-white/15 uppercase">veldedighetsfest 2025</div>
 
-      <div className="max-w-7xl mx-auto grid grid-cols-3 gap-8 mt-24">
+      <div className="max-w-7xl mx-auto grid grid-cols-3 gap-8 mt-[200px]">
         {/* QR Section - Spans 2 rows */}
         <div className="bg-white/5 backdrop-blur-sm px-16 py-8 rounded-3xl border border-white/10 h-full row-span-2 col-span-2 relative z-10 w-max rotate-2 transition-transform">
           <p className="text-6xl font-bold tracking-tight text-center">
@@ -54,7 +54,7 @@ export const CharityPage = () => {
         {/* Progress Section - Overlapping previous section */}
         {
           !isError && (
-            <div className="top-[200px] left-[960px] absolute w-[700px] h-max z-20 bg-online-blue/50 backdrop-blur-sm p-8 rounded-3xl border border-white/10 -rotate-2">
+            <div className="top-[300px] left-[960px] absolute w-[700px] h-max z-20 bg-online-blue/50 backdrop-blur-sm p-8 rounded-3xl border border-white/10 -rotate-2">
               <div className="space-y-4">
                 <h2 className="text-4xl font-bold">Opptjent så langt</h2>
                 {
@@ -124,7 +124,7 @@ export const CharityPage = () => {
         }
 
         {/* Event Details - Offset from grid */}
-        <div className="absolute left-[1000px] top-[575px] z-10 rotate-3">
+        <div className="absolute left-[1000px] top-[675px] z-10 rotate-3">
           <div className="bg-white/5 backdrop-blur-sm p-8 rounded-3xl border border-white/10 w-96">
             <h2 className="text-4xl font-bold mb-8">Når og hvor
               <span className="text-online-yellow pl-0.5">?</span>
