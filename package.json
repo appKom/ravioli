@@ -1,0 +1,17 @@
+{
+  "name": "infoskjerm",
+  "version": "1.0.0",
+  "description": "Infoskjerm is a digital information display for [Online](https://online.ntnu.no/). Located on A4, it provides information to students in real-time.",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "frontend": "npm run dev --prefix frontend",
+    "backend": "npm run dev --prefix backend",
+    "all": "concurrently \"npm:frontend\" \"npm:backend\""
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}
