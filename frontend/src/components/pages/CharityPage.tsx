@@ -124,23 +124,12 @@ export const CharityPage = () => {
         }
 
         {/* Onlove.no blæst*/}
-        <div className="absolute right-[200px] top-[600px] z-20 -rotate-3">
-          <div className="bg-white/5 backdrop-blur-sm p-8 rounded-3xl border border-white/10 w-[25rem]">
-            <h2 className="text-4xl font-bold mb-8 flex items-center gap-2">
-              <LinkIcon className="w-8 h-8 text-online-yellow" />
-              Gå til <span className="text-blue-300">onlove.no</span>
-              <span className="text-online-yellow pl-0.5">!</span>
-            </h2>
-          </div>
-        </div>
-
-        {/* Onlove.no blæst*/}
-        <div className="absolute right-[200px] top-[600px] z-20 -rotate-3">
-          <div className="bg-white/5 backdrop-blur-lg p-8 rounded-3xl border border-white/10 w-[25rem]">
-            <h2 className="text-4xl font-bold mb-8 flex items-center gap-2">
-              <LinkIcon className="w-8 h-8 text-online-yellow" />
-              Gå til <span className="text-blue-300">onlove.no</span>
-              <span className="text-online-yellow pl-0.5">!</span>
+        <div className="absolute left-[1300px] top-[600px] z-20 -rotate-3">
+          <div className="bg-white/5 backdrop-blur-sm p-8 rounded-3xl border border-white/10">
+            <h2 className="text-4xl font-bold flex items-center gap-2">
+              <LinkIcon className="w-8 h-8 text-online-yellow mr-1.5" />
+              Sjekk ut <span className="text-blue-400">onlove.no</span>
+              <span className="text-online-yellow -ml-1.5">!</span>
             </h2>
           </div>
         </div>
