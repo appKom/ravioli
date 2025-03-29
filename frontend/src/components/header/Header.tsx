@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import moment from 'moment';
 import { getRelevantMessages } from '../../lib/messages';
-import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import { AnimatedLogo } from './AnimatedLogo';
 import { DebugQR } from './DebugQR';
 import { useDarkMode } from '../utils/DarkModeProvider';
@@ -11,13 +10,7 @@ const REFRESH_TIME = '03:00'; // the time of day to refresh the page (use latest
 const MESSAGE_INTERVAL_MINUTES = 1.5; // how long between each message
 const MESSAGE_TIME_SECONDS = 10; // how long the message should be displayed
 
-type HeaderProps = {
-  timeRemaining: number;
-  displayDuration: number;
-  nextPage: () => void;
-};
-
-export const Header = (props: HeaderProps) => {
+export const Header = () => {
   const [time, setTime] = useState<string>(moment().format('HH:mm:ss'));
   const [showMessage, setShowMessage] = useState<boolean>(false);
   const [messageContent, setMessageContent] = useState<string>();
@@ -71,24 +64,8 @@ export const Header = (props: HeaderProps) => {
           <span className="pl-8 text-6xl border-l-[1.5px] dark:border-gray-700">{time}</span>
         </div>
 
-        <div className='flex items-center h-full gap-10'>
+        <div className='mr-6'>
           <DebugQR />
-
-          <div
-            className='mr-12 cursor-pointer pl-10 border-l-[1.5px] dark:border-gray-700'
-            onClick={props.nextPage}
-          >
-            <CircularProgressbar
-              className="h-12"
-              value={props.timeRemaining}
-              maxValue={props.displayDuration}
-              strokeWidth={50}
-              styles={buildStyles({
-                pathColor: '#0D5474',
-                trailColor: '#eee',
-              })}
-            />
-          </div>
         </div>
       </div>
     </div>
