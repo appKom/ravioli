@@ -15,6 +15,7 @@ import clsx from "clsx";
 import { RavioliPage } from "./RavioliPage";
 import countdownToEaster from "../../lib/daysUntilEaster";
 import { CharityPage } from "./CharityPage";
+import AprilFoolsFont from "../utils/AprilFoolsFont";
 
 interface PageAbstract {
   component: ReactElement;
@@ -224,6 +225,7 @@ export const MainPage = () => {
 
   return (
     <DarkModeProvider>
+      <AprilFoolsFont />
       <div className={clsx(
         "overflow-hidden dark:bg-[#111827] h-screen flex flex-col",
         import.meta.env.VITE_NODE_ENV !== "development" && "cursor-none"
