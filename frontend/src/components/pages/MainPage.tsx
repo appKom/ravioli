@@ -15,6 +15,7 @@ import clsx from "clsx";
 import { RavioliPage } from "./RavioliPage";
 import countdownToEaster from "../../lib/daysUntilEaster";
 import { CharityPage } from "./CharityPage";
+import { LoadingWrapper } from "../LoadingWrapper";
 
 interface PageAbstract {
   component: ReactElement;
@@ -229,12 +230,10 @@ export const MainPage = () => {
         import.meta.env.VITE_NODE_ENV !== "development" && "cursor-none"
       )}>
         {!currentPage.fullScreen && (
-          <Header
-            displayDuration={currentPage.duration}
-            timeRemaining={millisecondsLeft / 1000}
-            nextPage={nextPage}
-          />
+          <Header />
         )}
+        <LoadingWrapper seconds={millisecondsLeft / 1000} duration={currentPage.duration}
+          nextPage={nextPage} />
         <div
           className="h-full"
           style={{ transition: "opacity 500ms", opacity }}
