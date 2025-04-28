@@ -127,7 +127,7 @@ export const MainPage = () => {
       priority: () => 0.01,
       fullScreen: true,
     },
-    {
+    /* {
       component: <EasterPage />,
       duration: 20,
       priority: () => {
@@ -135,8 +135,8 @@ export const MainPage = () => {
         else return 0;
       },
       fullScreen: true,
-    },
-    {
+    }, */
+    /* {
       component: <CharityPage />,
       duration: 30,
       fullScreen: true,
@@ -147,7 +147,7 @@ export const MainPage = () => {
         if (today <= seasonEnd) return 3;
         else return 0;
       },
-    },
+    }, */
   ];
 
   const pages = preparePageSpecifications(pageSpecifications);
