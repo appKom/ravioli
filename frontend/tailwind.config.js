@@ -50,7 +50,7 @@ module.exports = {
         },
       },
     },
-    darkMode: 'selector',
-    plugins: [],
   },
+  darkMode: 'selector',
+  plugins: [],
 }
