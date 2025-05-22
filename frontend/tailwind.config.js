@@ -42,12 +42,12 @@ module.exports = {
             '50%': { opacity: '0' },
           },
         },
-        backgroundImage: {
-          "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        },
-        boxShadow: {
-          glow: '0 0 10px 5px rgba(249, 183, 89, 0.7)',
-        },
+      },
+      backgroundImage: {
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+      },
+      boxShadow: {
+        glow: '0 0 10px 5px rgba(249, 183, 89, 0.7)',
       },
     },
   },
