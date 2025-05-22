@@ -137,8 +137,8 @@ export const MainPage = () => {
     },
     {
       component: <JubkomPage />,
-      duration: 200,
-      priority: () => 1.0,
+      duration: 40,
+      priority: () => 0.7,
       fullScreen: true,
     },
   ];
