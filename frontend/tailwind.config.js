@@ -18,6 +18,7 @@ module.exports = {
         driftOff: 'driftOff 6s linear infinite',
         flicker: 'flicker 0.15s infinite',
         scan: 'scan 0.2s linear infinite',
+        blink: 'blink 2s infinite',
       },
       keyframes: {
         swing: {
@@ -36,13 +37,19 @@ module.exports = {
         scan: {
           '0%': { backgroundPosition: '0 0' },
           '100%': { backgroundPosition: '0 10px' },
+          blink: {
+            '0%, 100%': { opacity: '1' },
+            '50%': { opacity: '0' },
+          },
+        },
+        backgroundImage: {
+          "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        },
+        boxShadow: {
+          glow: '0 0 10px 5px rgba(249, 183, 89, 0.7)',
         },
       },
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-      },
     },
-  },
-  darkMode: 'selector',
-  plugins: [],
-};
+    darkMode: 'selector',
+    plugins: [],
+  };

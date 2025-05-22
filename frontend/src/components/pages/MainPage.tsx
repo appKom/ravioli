@@ -10,11 +10,13 @@ import { PodcastPage } from "./PodcastPage";
 import { MovemberPage } from "./MovemberPage";
 import { Kunnskapkom } from "./Kunnskapkom";
 import { SlackPage } from "./SlackPage";
-import { EasterPage } from "./EasterPage";
+/* import { EasterPage } from "./EasterPage"; */
 import clsx from "clsx";
 import { RavioliPage } from "./RavioliPage";
-import countdownToEaster from "../../lib/daysUntilEaster";
+/* import countdownToEaster from "../../lib/daysUntilEaster"; */
 import { JubkomPage } from "./JubkomPage";
+/* import { CharityPage } from "./CharityPage"; */
+import AprilFoolsFont from "../utils/AprilFoolsFont";
 
 interface PageAbstract {
   component: ReactElement;
@@ -126,7 +128,7 @@ export const MainPage = () => {
       priority: () => 0.01,
       fullScreen: true,
     },
-    {
+    /* {
       component: <EasterPage />,
       duration: 20,
       priority: () => {
@@ -134,13 +136,25 @@ export const MainPage = () => {
         else return 0;
       },
       fullScreen: true,
-    },
+    }, */
     {
       component: <JubkomPage />,
       duration: 40,
       priority: () => 0.7,
       fullScreen: true,
     },
+    /* {
+      component: <CharityPage />,
+      duration: 30,
+      fullScreen: true,
+      priority: () => {
+        const today = new Date();
+        const seasonEnd = new Date(2025, 3, 30); // Veldedighetsfest 2025, 29. mars
+
+        if (today <= seasonEnd) return 3;
+        else return 0;
+      },
+    }, */
   ];
 
   const pages = preparePageSpecifications(pageSpecifications);
@@ -218,6 +232,7 @@ export const MainPage = () => {
 
   return (
     <DarkModeProvider>
+      <AprilFoolsFont />
       <div className={clsx(
         "overflow-hidden dark:bg-[#111827] h-screen flex flex-col",
         import.meta.env.VITE_NODE_ENV !== "development" && "cursor-none"
