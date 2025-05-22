@@ -41,10 +41,6 @@ module.exports = {
         scan: {
           '0%': { backgroundPosition: '0 0' },
           '100%': { backgroundPosition: '0 10px' },
-          blink: {
-            '0%, 100%': { opacity: '1' },
-            '50%': { opacity: '0' },
-          },
         },
       },
       backgroundImage: {
