@@ -27,7 +27,7 @@ export const JubkomPage = () => {
           {timeLeft.seconds} sekunder
         </h1>
         {/* QR code */}
-        <QRCode value="https://jubileum.online.ntnu.no" size={400} />
+        <QRCode value="https://jubileum.online.ntnu.no/" size={400} />
       </div>
     </div>
   )
