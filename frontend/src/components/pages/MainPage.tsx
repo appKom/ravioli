@@ -10,11 +10,12 @@ import { PodcastPage } from "./PodcastPage";
 import { MovemberPage } from "./MovemberPage";
 import { Kunnskapkom } from "./Kunnskapkom";
 import { SlackPage } from "./SlackPage";
-import { EasterPage } from "./EasterPage";
+/* import { EasterPage } from "./EasterPage"; */
 import clsx from "clsx";
 import { RavioliPage } from "./RavioliPage";
-import countdownToEaster from "../../lib/daysUntilEaster";
-import { CharityPage } from "./CharityPage";
+/* import countdownToEaster from "../../lib/daysUntilEaster"; */
+import { JubkomPage } from "./JubkomPage";
+/* import { CharityPage } from "./CharityPage"; */
 import AprilFoolsFont from "../utils/AprilFoolsFont";
 
 interface PageAbstract {
@@ -136,6 +137,12 @@ export const MainPage = () => {
       },
       fullScreen: true,
     }, */
+    {
+      component: <JubkomPage />,
+      duration: 40,
+      priority: () => 0.7,
+      fullScreen: true,
+    },
     /* {
       component: <CharityPage />,
       duration: 30,

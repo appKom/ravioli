@@ -4,6 +4,7 @@ module.exports = {
   theme: {
     fontFamily: {
       'cardo': ['cardo', 'sans-serif'],
+      'glass': ['glass', 'monospace'],
     },
     extend: {
       colors: {
@@ -15,6 +16,8 @@ module.exports = {
       animation: {
         swing: 'swing 5s ease-in-out infinite',
         driftOff: 'driftOff 6s linear infinite',
+        flicker: 'flicker 0.15s infinite',
+        scan: 'scan 0.2s linear infinite',
         blink: 'blink 2s infinite',
       },
       keyframes: {
@@ -30,6 +33,14 @@ module.exports = {
         blink: {
           '0%, 100%': { opacity: '1' },
           '50%': { opacity: '0' },
+        },
+        flicker: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.9' },
+        },
+        scan: {
+          '0%': { backgroundPosition: '0 0' },
+          '100%': { backgroundPosition: '0 10px' },
         },
       },
       backgroundImage: {
