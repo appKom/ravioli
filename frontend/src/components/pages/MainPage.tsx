@@ -54,7 +54,7 @@ export const MainPage = () => {
     {
       component: <SlackPage />,
       duration: 60,
-      priority: () => 3,
+      priority: () => 2.5,
     },
     /* {
       component: <VideoPage pageDuration={60} />,
@@ -77,7 +77,7 @@ export const MainPage = () => {
     {
       component: <OnlineAppBlastPage />,
       duration: 30,
-      priority: () => 1.5,
+      priority: () => 1.2,
     },
     {
       component: <BratPage />,
@@ -101,7 +101,7 @@ export const MainPage = () => {
     {
       component: <PodcastPage />,
       duration: 30,
-      priority: () => 1.5,
+      priority: () => 1.2,
     },
     {
       component: <MovemberPage />,
@@ -139,8 +139,8 @@ export const MainPage = () => {
     }, */
     {
       component: <JubkomPage />,
-      duration: 40,
-      priority: () => 0.7,
+      duration: 30,
+      priority: () => 1.0,
       fullScreen: true,
     },
     /* {
