@@ -140,7 +140,7 @@ export const MainPage = () => {
     {
       component: <JubkomPage />,
       duration: 30,
-      priority: () => 1.0,
+      priority: () => 0.7,
       fullScreen: true,
     },
     /* {
