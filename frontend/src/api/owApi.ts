@@ -1,21 +1,32 @@
-import moment from 'moment';
-
 export const fetchEventsByStartDate = async() => {
-  const apiUrl = `https://old.online.ntnu.no/api/v1/event/events?event_start__gte=${moment().format('YYYY-MM-DDTHH:mm')}`;
+  const response = await fetch(`/owapi/api/trpc/event.all`);
+  // console.log("Raw response:", response);
 
-  const response = await fetch(apiUrl);
   if (response.ok) {
-      return await response.json();
+    const json = await response.json();
+    const items = json.result?.data?.json?.items ?? [];
+
+    return items.map((item: any) => ({
+      ...item.event, 
+      attendanceId: item.attendance?.id ?? null,
+      attendance: item.attendance ?? null,
+    }));
   }
   throw response;
 };
 
-export const fetchAttendanceByEventId = async(eventId: number) => {
-  const apiUrl = `https://old.online.ntnu.no/api/v1/event/attendance-events/${eventId}`;
+export const fetchAttendanceByEventId = async (eventId: string) => {
+const response = await fetch(
+  `/owapi/api/trpc/event.get?input=${encodeURIComponent(JSON.stringify({ id: eventId }))}`
+);
 
-  const response = await fetch(apiUrl);
-  if (response.ok) {
-      return await response.json();
+  const json = await response.json();
+  console.log("Full API response:", json);
+
+  if (!response.ok || json.error) {
+    console.error("API returned error:", json.error);
+    return null;
   }
-  throw response;
-}
+return json.result?.data ?? null;
+};
+

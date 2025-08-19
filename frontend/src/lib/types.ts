@@ -1,12 +1,13 @@
 export const EVENT_TYPES = [
-  { typeName: "Sosialt", colorName: "green" },
-  { typeName: "Bedpres", colorName: "red" },
-  { typeName: "Kurs", colorName: "blue" },
-  { typeName: "Utflukt", colorName: "yellow" },
-  { typeName: "Ekskursjon", colorName: "blue" },
-  { typeName: "Internt", colorName: "red" },
-  { typeName: "Annet", colorName: "purple" },
-  { typeName: "Realfagskjelleren", colorName: "orange" },
+  { typeName: "SOCIAL", displayName: "Sosialt", colorName: "green" },
+  { typeName: "COMPANY", displayName: "Bedpres", colorName: "red" },
+  { typeName: "ACADEMIC", displayName: "Kurs", colorName: "blue" },
+  // { typeName: "Utflukt", colorName: "yellow" }, //eksisterer ikke i den nye OW
+  // { typeName: "Ekskursjon", colorName: "blue" }, //eksisterer ikke i den nye OW
+  { typeName: "INTERNAL", displayName: "Internt", colorName: "red" },
+  { typeName: "OTHER", displayName: "Annet", colorName: "purple" },
+  // { typeName: "Realfagskjelleren", colorName: "orange" }, //eksisterer ikke i den nye OW
+  { typeName: "WELCOME", displayName: "Fadderuke", colorName: "pink"}
 ];
 
 export type MemeType = {
@@ -52,31 +53,49 @@ export interface IEventImage {
   preset: string;
   preset_display: string;
 }
+//Fra gammel API. 
+// export interface IEvent {
+//   id: string;
+//   title: string;
+//   slug: string;
+//   ingress: string;
+//   ingress_short: string;
+//   description: string;
+//   start_date: string; // ISO date string
+//   end_date: string; // ISO date string
+//   location: string;
+//   event_type: number;
+//   event_type_display: string;
+//   organizer: number;
+//   author: number | null;
+//   images: IEventImage[];
+//   companies: string[];
+//   is_attendance_event: boolean;
+//   max_capacity: number;
+//   waitlist: boolean;
+//   number_of_seats_taken: number;
+//   attendee_info: string | null;
+//   registration_start: string; // ISO date string
+//   registration_end: string; // ISO date string
+// }
 
-export interface IEvent {
-  id: number;
+export interface INewEvent {
+  id: string;
+  status: string;
+  type: string;
   title: string;
-  slug: string;
-  ingress: string;
-  ingress_short: string;
+  start: string; // ISO date string
+  end: string;   // ISO date string
   description: string;
-  start_date: string; // ISO date string
-  end_date: string; // ISO date string
-  location: string;
-  event_type: number;
-  event_type_display: string;
-  organizer: number;
-  author: number | null;
-  images: IEventImage[];
-  companies: string[];
-  is_attendance_event: boolean;
+  subtitle: string | null;
+  imageUrl: string;
+  attendanceId?: string | null; 
+  attendance?: IEventAttendanceDetails | null;   locationTitle: string | null;
+  locationAddress: string | null;
+  locationLink: string | null;
   max_capacity: number;
-  waitlist: boolean;
-  number_of_seats_taken: number;
-  attendee_info: string | null;
-  registration_start: string; // ISO date string
-  registration_end: string; // ISO date string
 }
+
 
 export interface IExtraOption {
   id: number;
@@ -86,11 +105,13 @@ export interface IExtraOption {
 
 export interface IEventAttendanceDetails {
   id: number;
-  max_capacity: number;
+  capacity: number;
   waitlist: boolean;
+  attendees: Array<any>;
+  pools: Array<any>;
   guest_attendance: boolean;
-  registration_start: string; // ISO date string
-  registration_end: string; // ISO date string
+  registerStart: string; // ISO date string
+  registerEnd: string; // ISO date string
   unattend_deadline: string; // ISO date string
   automatically_set_marks: boolean;
   rule_bundles: number[];
