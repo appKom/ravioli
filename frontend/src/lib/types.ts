@@ -53,31 +53,31 @@ export interface IEventImage {
   preset: string;
   preset_display: string;
 }
-
-export interface IEvent {
-  id: string;
-  title: string;
-  slug: string;
-  ingress: string;
-  ingress_short: string;
-  description: string;
-  start_date: string; // ISO date string
-  end_date: string; // ISO date string
-  location: string;
-  event_type: number;
-  event_type_display: string;
-  organizer: number;
-  author: number | null;
-  images: IEventImage[];
-  companies: string[];
-  is_attendance_event: boolean;
-  max_capacity: number;
-  waitlist: boolean;
-  number_of_seats_taken: number;
-  attendee_info: string | null;
-  registration_start: string; // ISO date string
-  registration_end: string; // ISO date string
-}
+//Fra gammel API. 
+// export interface IEvent {
+//   id: string;
+//   title: string;
+//   slug: string;
+//   ingress: string;
+//   ingress_short: string;
+//   description: string;
+//   start_date: string; // ISO date string
+//   end_date: string; // ISO date string
+//   location: string;
+//   event_type: number;
+//   event_type_display: string;
+//   organizer: number;
+//   author: number | null;
+//   images: IEventImage[];
+//   companies: string[];
+//   is_attendance_event: boolean;
+//   max_capacity: number;
+//   waitlist: boolean;
+//   number_of_seats_taken: number;
+//   attendee_info: string | null;
+//   registration_start: string; // ISO date string
+//   registration_end: string; // ISO date string
+// }
 
 export interface INewEvent {
   id: string;

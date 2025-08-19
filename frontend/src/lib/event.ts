@@ -14,13 +14,15 @@ export const calculateSeatsInfo = (attendanceEvent: IEventAttendanceDetails): At
 
 export const selectIndicatorColor = (
   percentageFilled: number,
-  startDate: string,
-  endDate: string
+  startDate: string | Date,
+  endDate: string | Date
 ): string => {
-  const currentDate = new Date().toISOString();
+  const now = new Date();
+  const start = new Date(startDate);
+  const end = new Date(endDate);
 
   // Check if event is ongoing
-  if (currentDate >= startDate && currentDate <= endDate) {
+  if (now >= start && now <= end) {
     return 'bg-amber-200 text-amber-800';
   }
 

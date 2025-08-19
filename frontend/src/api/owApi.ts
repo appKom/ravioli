@@ -1,5 +1,3 @@
-// import moment from 'moment';
-
 export const fetchEventsByStartDate = async() => {
   const response = await fetch(`/owapi/api/trpc/event.all`);
   // console.log("Raw response:", response);
@@ -13,7 +11,6 @@ export const fetchEventsByStartDate = async() => {
       attendanceId: item.attendance?.id ?? null,
       attendance: item.attendance ?? null,
     }));
-      // return await response.json();
   }
   throw response;
 };
@@ -30,8 +27,6 @@ const response = await fetch(
     console.error("API returned error:", json.error);
     return null;
   }
-
-  // tRPC response contains a 'result.data' field
 return json.result?.data ?? null;
 };
 

@@ -5,22 +5,13 @@ import { formatWeekday, formatClock, formatDateName, isLongEvent, sameMonth } fr
 import { EVENT_TYPES, IEventAttendanceDetails, INewEvent } from '../../lib/types';
 import { BaseCard } from './BaseCard';
 import { removeOWFormatting } from '../../lib/text';
-// import { useQuery } from '@tanstack/react-query';
-// import { fetchAttendanceByEventId } from '../../api/owApi';
 import { calculateSeatsInfo, selectIndicatorColor, determineTimeBeforeRegistrationOpens, determineStatusText } from '../../lib/event';
 import clsx from 'clsx';
 
 export function EventCard({ event }: { event: INewEvent & {attendance?: IEventAttendanceDetails | null} }) {
-  // const { ingress, title, start_date, end_date, event_type, images } = event;
   const { title, start, end, imageUrl } = event;
 
   const isRegistrationEvent = event.max_capacity !== null;
-
-  // const { isLoading: attendanceIsLoading, isError: attendanceIsError, data: attendanceData } = useQuery({
-  //   queryKey: ['events', event.id],
-  //   queryFn: () => fetchAttendanceByEventId(event.id),
-  //   enabled: Boolean(event.id) && isRegistrationEvent,
-  // });
 
   const containerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -33,26 +24,24 @@ export function EventCard({ event }: { event: INewEvent & {attendance?: IEventAt
     container.style.setProperty('--overflow-width', `${overflowWidth}px`);
   }, [event, attendanceData]);
 
-  // if (attendanceIsLoading) return <BaseCard isLoading />;
-  // if (attendanceIsError) return <BaseCard isError />;
-
   const eventType = EVENT_TYPES.find(t => t.typeName === event.type);
   const eventTypeName = eventType?.displayName;
   const eventColor = eventType?.colorName;
 
   const { seatsLeft, percentageFilled } = attendanceData
-  ? calculateSeatsInfo(attendanceData)
+  ? calculateSeatsInfo(attendanceData)  
   : { seatsLeft: 0, percentageFilled: 0 };
 
-  const indicatorColor = selectIndicatorColor(
+  const indicatorColor = selectIndicatorColor(  
     percentageFilled,
-    String(event.start),
-    String(event.end)
+    String(start),
+    String(end)
   );
+
   const registrationEnd = new Date(attendanceData?.registerEnd ?? 0);
   const registrationStart = new Date(attendanceData?.registerStart ?? 0);
   const isRegistrationEnded = new Date() > registrationEnd;
-  const timeBeforeRegistrationOpens = determineTimeBeforeRegistrationOpens(registrationStart);
+  const timeBeforeRegistrationOpens = determineTimeBeforeRegistrationOpens(registrationStart); 
   const isLongDurationEvent = isLongEvent(new Date(start), new Date(end));
 
   const dateBadgeText = isLongDurationEvent
@@ -61,13 +50,13 @@ export function EventCard({ event }: { event: INewEvent & {attendance?: IEventAt
     : `Fra ${formatDateName(start)} til ${formatDateName(end)}` // Start and end date in different months
   : `${formatWeekday(start)} ${formatDateName(start)}, ${formatClock(start)}`; // Single day event
 
-  const statusText = determineStatusText(
+  const statusText = determineStatusText( //todo
     isRegistrationEnded,
     timeBeforeRegistrationOpens,
     seatsLeft,
     attendanceData?.number_on_waitlist ?? 0,
-    event.start,
-    event.end,
+    start,
+    end,
   );
 
   const reservedCount = attendanceData?.attendees.filter(a => a.reserved).length ?? 0;
@@ -101,9 +90,9 @@ export function EventCard({ event }: { event: INewEvent & {attendance?: IEventAt
         <div ref={contentRef} className='flex w-full gap-3 scrolling-text'>
           {eventTypeName && <Badge text={eventTypeName} leftIcon='star' color={eventColor} />}
           {start && <Badge text={dateBadgeText} leftIcon='calendar' color='gray' />}
-          {isRegistrationEvent && attendanceData?.attendees && attendanceData?.pools && (
+          {isRegistrationEvent && attendanceData && (
             <Badge text={
-              attendanceData.pools[0]?.capacity
+              attendanceData.pools?.[0]?.capacity
                 ? `${reservedCount}/${attendanceData.pools[0]?.capacity}`
                 : `${reservedCount}`
             } leftIcon='people' color='gray' />
