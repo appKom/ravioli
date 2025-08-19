@@ -8,7 +8,7 @@ export const OpptakPage = () => {
           Komitéopptak! Søk Søk! 
         </h1>
         <p className="italic text-6xl mb-10">
-          Søknadsfrist 23.august!!
+          Søknadsfrist 23. august!!
         </p>
         <QRCode value="https://opptak.online.ntnu.no/" size={400}/>
       </div>
