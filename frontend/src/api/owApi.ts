@@ -1,21 +1,36 @@
-import moment from 'moment';
+// import moment from 'moment';
 
 export const fetchEventsByStartDate = async() => {
-  const apiUrl = `https://old.online.ntnu.no/api/v1/event/events?event_start__gte=${moment().format('YYYY-MM-DDTHH:mm')}`;
+  const response = await fetch(`/owapi/api/trpc/event.all`);
+  console.log("Raw response:", response);
 
-  const response = await fetch(apiUrl);
   if (response.ok) {
-      return await response.json();
+    const json = await response.json();
+    const items = json.result?.data?.json?.items ?? [];
+    console.log("Raw JSON:", json);
+
+    return items.map((item: any) => ({
+      ...item.event, 
+      attendanceId: item.attendance?.id ?? null,
+      attendance: item.attendance ?? null,
+    }));
+      // return await response.json();
   }
   throw response;
 };
 
-export const fetchAttendanceByEventId = async(eventId: number) => {
-  const apiUrl = `https://old.online.ntnu.no/api/v1/event/attendance-events/${eventId}`;
+export const fetchAttendanceByEventId = async (eventId: string) => {
+  const response = await fetch(
+    `owapi/api/trpc/event.get?input=${encodeURIComponent(JSON.stringify(eventId))}`
+  );
+  const json = await response.json();
 
-  const response = await fetch(apiUrl);
-  if (response.ok) {
-      return await response.json();
+  if (!response.ok) {
+    console.error("tRPC error:", json);
+    return null;
   }
-  throw response;
-}
+
+  // tRPC response contains a 'result.data' field
+  return json.result?.data ?? null;
+};
+
