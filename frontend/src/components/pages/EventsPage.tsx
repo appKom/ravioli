@@ -15,9 +15,6 @@ export const EventsPage = () => {
     refetchInterval: 1000 * 60 * REFETCH_INTERVAL_MINUTES,
   });
 
-  console.log("Events API response:", data);
-
-
   if (isLoading) return <Loading text="Henter siste arrangementer fra OW..." />;
   if (isError) return <Error />;
 

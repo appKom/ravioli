@@ -69,7 +69,9 @@ export function EventCard({ event }: { event: INewEvent & {attendance?: IEventAt
     event.start,
     event.end,
   );
-  console.log("Attendancedata here", attendanceData)
+
+  const reservedCount = attendanceData?.attendees.filter(a => a.reserved).length ?? 0;
+
   return (
     <BaseCard showOverflow>
       {statusText && (
@@ -100,7 +102,11 @@ export function EventCard({ event }: { event: INewEvent & {attendance?: IEventAt
           {eventTypeName && <Badge text={eventTypeName} leftIcon='star' color={eventColor} />}
           {start && <Badge text={dateBadgeText} leftIcon='calendar' color='gray' />}
           {isRegistrationEvent && attendanceData?.attendees && attendanceData?.pools && (
-            <Badge text={`${attendanceData.attendees.length}/${attendanceData.pools[0]?.capacity}`} leftIcon='people' color='gray' />
+            <Badge text={
+              attendanceData.pools[0]?.capacity
+                ? `${reservedCount}/${attendanceData.pools[0]?.capacity}`
+                : `${reservedCount}`
+            } leftIcon='people' color='gray' />
           )}
         </div>
       </div>

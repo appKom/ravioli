@@ -105,13 +105,13 @@ export interface IExtraOption {
 
 export interface IEventAttendanceDetails {
   id: number;
-  max_capacity: number;
-  pools: Array<any>;
   capacity: number;
   waitlist: boolean;
+  attendees: Array<any>;
+  pools: Array<any>;
   guest_attendance: boolean;
-  registration_start: string; // ISO date string
-  registration_end: string; // ISO date string
+  registerStart: string; // ISO date string
+  registerEnd: string; // ISO date string
   unattend_deadline: string; // ISO date string
   automatically_set_marks: boolean;
   rule_bundles: number[];
