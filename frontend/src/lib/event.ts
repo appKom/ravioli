@@ -6,9 +6,9 @@ interface AttendanceInfo {
 }
 
 export const calculateSeatsInfo = (attendanceEvent: IEventAttendanceDetails): AttendanceInfo => {
-  const { number_of_seats_taken = 0, max_capacity = 0 } = attendanceEvent || {};
-  const seatsLeft = max_capacity - number_of_seats_taken;
-  const percentageFilled = (number_of_seats_taken / max_capacity) * 100;
+  const { number_of_seats_taken = 0, capacity = 0 } = attendanceEvent || {};
+  const seatsLeft = capacity - number_of_seats_taken;
+  const percentageFilled = (number_of_seats_taken / capacity) * 100;
   return { seatsLeft, percentageFilled };
 };
 

@@ -5,8 +5,8 @@ import { formatWeekday, formatClock, formatDateName, isLongEvent, sameMonth } fr
 import { EVENT_TYPES, IEventAttendanceDetails, INewEvent } from '../../lib/types';
 import { BaseCard } from './BaseCard';
 import { removeOWFormatting } from '../../lib/text';
-import { useQuery } from '@tanstack/react-query';
-import { fetchAttendanceByEventId } from '../../api/owApi';
+// import { useQuery } from '@tanstack/react-query';
+// import { fetchAttendanceByEventId } from '../../api/owApi';
 import { calculateSeatsInfo, selectIndicatorColor, determineTimeBeforeRegistrationOpens, determineStatusText } from '../../lib/event';
 import clsx from 'clsx';
 
@@ -16,14 +16,15 @@ export function EventCard({ event }: { event: INewEvent & {attendance?: IEventAt
 
   const isRegistrationEvent = event.max_capacity !== null;
 
-  const { isLoading: attendanceIsLoading, isError: attendanceIsError, data: attendanceData } = useQuery({
-    queryKey: ['events', event.id],
-    queryFn: () => fetchAttendanceByEventId(event.id),
-    enabled: Boolean(event.id) && isRegistrationEvent,
-  });
+  // const { isLoading: attendanceIsLoading, isError: attendanceIsError, data: attendanceData } = useQuery({
+  //   queryKey: ['events', event.id],
+  //   queryFn: () => fetchAttendanceByEventId(event.id),
+  //   enabled: Boolean(event.id) && isRegistrationEvent,
+  // });
 
   const containerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const attendanceData = event.attendance;
 
   useEffect(() => {
     const container = containerRef.current;
@@ -32,21 +33,24 @@ export function EventCard({ event }: { event: INewEvent & {attendance?: IEventAt
     container.style.setProperty('--overflow-width', `${overflowWidth}px`);
   }, [event, attendanceData]);
 
-  if (attendanceIsLoading) return <BaseCard isLoading />;
-  if (attendanceIsError) return <BaseCard isError />;
+  // if (attendanceIsLoading) return <BaseCard isLoading />;
+  // if (attendanceIsError) return <BaseCard isError />;
 
   const eventType = EVENT_TYPES.find(t => t.typeName === event.type);
   const eventTypeName = eventType?.displayName;
   const eventColor = eventType?.colorName;
 
-  const { seatsLeft, percentageFilled } = calculateSeatsInfo(attendanceData);
+  const { seatsLeft, percentageFilled } = attendanceData
+  ? calculateSeatsInfo(attendanceData)
+  : { seatsLeft: 0, percentageFilled: 0 };
+
   const indicatorColor = selectIndicatorColor(
     percentageFilled,
     String(event.start),
     String(event.end)
   );
-  const registrationEnd = new Date(attendanceData?.registration_end);
-  const registrationStart = new Date(attendanceData?.registration_start);
+  const registrationEnd = new Date(attendanceData?.registerEnd ?? 0);
+  const registrationStart = new Date(attendanceData?.registerStart ?? 0);
   const isRegistrationEnded = new Date() > registrationEnd;
   const timeBeforeRegistrationOpens = determineTimeBeforeRegistrationOpens(registrationStart);
   const isLongDurationEvent = isLongEvent(new Date(start), new Date(end));
@@ -61,11 +65,11 @@ export function EventCard({ event }: { event: INewEvent & {attendance?: IEventAt
     isRegistrationEnded,
     timeBeforeRegistrationOpens,
     seatsLeft,
-    attendanceData?.number_on_waitlist,
+    attendanceData?.number_on_waitlist ?? 0,
     event.start,
     event.end,
   );
-
+  console.log("Attendancedata here", attendanceData)
   return (
     <BaseCard showOverflow>
       {statusText && (
@@ -95,8 +99,8 @@ export function EventCard({ event }: { event: INewEvent & {attendance?: IEventAt
         <div ref={contentRef} className='flex w-full gap-3 scrolling-text'>
           {eventTypeName && <Badge text={eventTypeName} leftIcon='star' color={eventColor} />}
           {start && <Badge text={dateBadgeText} leftIcon='calendar' color='gray' />}
-          {isRegistrationEvent && attendanceData && (
-            <Badge text={`${attendanceData.number_of_seats_taken}/${attendanceData.max_capacity}`} leftIcon='people' color='gray' />
+          {isRegistrationEvent && attendanceData?.attendees && attendanceData?.pools && (
+            <Badge text={`${attendanceData.attendees.length}/${attendanceData.pools[0]?.capacity}`} leftIcon='people' color='gray' />
           )}
         </div>
       </div>
