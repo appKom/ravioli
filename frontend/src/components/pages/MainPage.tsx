@@ -5,11 +5,11 @@ import { OnlineAppBlastPage } from "./OnlineAppBlastPage";
 import { ChristmasPage } from "./ChristmasPage";
 import { EventsPage } from "./EventsPage";
 import { NapkomPage } from "./Napkom";
-import { BratPage } from "./BratPage";
-import { PodcastPage } from "./PodcastPage";
+// import { BratPage } from "./BratPage";
+// import { PodcastPage } from "./PodcastPage";
 import { MovemberPage } from "./MovemberPage";
 import { Kunnskapkom } from "./Kunnskapkom";
-import { SlackPage } from "./SlackPage";
+// import { SlackPage } from "./SlackPage";
 /* import { EasterPage } from "./EasterPage"; */
 import clsx from "clsx";
 import { RavioliPage } from "./RavioliPage";
@@ -63,11 +63,11 @@ export const MainPage = () => {
         else return 0;
       },
     },
-    {
-      component: <SlackPage />,
-      duration: 60,
-      priority: () => 2.5,
-    },
+    // { //Temporary-hide, need maintaining
+    //   component: <SlackPage />,
+    //   duration: 60,
+    //   priority: () => 2.5,
+    // },
     /* {
       component: <VideoPage pageDuration={60} />,
       duration: 60,
@@ -91,12 +91,12 @@ export const MainPage = () => {
       duration: 30,
       priority: () => 1.2,
     },
-    {
-      component: <BratPage />,
-      duration: 20,
-      priority: () => 0.02,
-      fullScreen: true,
-    },
+    // {
+    //   component: <BratPage />,
+    //   duration: 20,
+    //   priority: () => 0.02,
+    //   fullScreen: true,
+    // },
     {
       component: <NapkomPage />,
       duration: 20,
@@ -110,11 +110,11 @@ export const MainPage = () => {
       },
       fullScreen: true,
     },
-    {
-      component: <PodcastPage />,
-      duration: 30,
-      priority: () => 1.2,
-    },
+    // {
+    //   component: <PodcastPage />,
+    //   duration: 30,
+    //   priority: () => 1.2,
+    // },
     {
       component: <MovemberPage />,
       duration: 20,
@@ -137,7 +137,7 @@ export const MainPage = () => {
     {
       component: <RavioliPage />,
       duration: 20,
-      priority: () => 0.01,
+      priority: () => 0.3,
       fullScreen: true,
     },
     /* {
