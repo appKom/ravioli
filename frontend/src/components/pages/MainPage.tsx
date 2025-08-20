@@ -9,7 +9,7 @@ import { NapkomPage } from "./Napkom";
 // import { PodcastPage } from "./PodcastPage";
 import { MovemberPage } from "./MovemberPage";
 import { Kunnskapkom } from "./Kunnskapkom";
-// import { SlackPage } from "./SlackPage";
+import { SlackPage } from "./SlackPage";
 /* import { EasterPage } from "./EasterPage"; */
 import clsx from "clsx";
 import { RavioliPage } from "./RavioliPage";
@@ -63,11 +63,11 @@ export const MainPage = () => {
         else return 0;
       },
     },
-    // { //Temporary-hide, need maintaining
-    //   component: <SlackPage />,
-    //   duration: 60,
-    //   priority: () => 2.5,
-    // },
+    { 
+      component: <SlackPage />,
+      duration: 60,
+      priority: () => 2.5,
+    },
     /* {
       component: <VideoPage pageDuration={60} />,
       duration: 60,
