@@ -1,7 +1,7 @@
 import { useState, useEffect, ReactElement } from "react";
 import { Header } from "../header/Header";
 import { DarkModeProvider } from "../utils/DarkModeProvider";
-import { OnlineAppBlastPage } from "./OnlineAppBlastPage";
+// import { OnlineAppBlastPage } from "./OnlineAppBlastPage";
 import { ChristmasPage } from "./ChristmasPage";
 import { EventsPage } from "./EventsPage";
 import { NapkomPage } from "./Napkom";
@@ -86,11 +86,11 @@ export const MainPage = () => {
       },
       fullScreen: true,
     },
-    {
-      component: <OnlineAppBlastPage />,
-      duration: 30,
-      priority: () => 1.2,
-    },
+    // {
+    //   component: <OnlineAppBlastPage />,
+    //   duration: 30,
+    //   priority: () => 1.2,
+    // },
     // {
     //   component: <BratPage />,
     //   duration: 20,
