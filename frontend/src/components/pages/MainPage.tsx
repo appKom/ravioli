@@ -17,7 +17,8 @@ import { RavioliPage } from "./RavioliPage";
 import { JubkomPage } from "./JubkomPage";
 /* import { CharityPage } from "./CharityPage"; */
 import AprilFoolsFont from "../utils/AprilFoolsFont";
-import { OpptakPage } from "./OpptakPage";
+// import { VideoPage } from "./VideoPage";
+// import { OpptakPage } from "./OpptakPage";
 
 interface PageAbstract {
   component: ReactElement;
@@ -52,17 +53,17 @@ export const MainPage = () => {
       duration: 60,
       priority: () => 4,
     },
-    {
-      component: <OpptakPage />,
-      duration: 40,
-      priority: () => {
-        const today = new Date();
-        const lastDay = new Date(today.getFullYear(), 7, 24);
+    // {
+    //   component: <OpptakPage />,
+    //   duration: 40,
+    //   priority: () => {
+    //     const today = new Date();
+    //     const lastDay = new Date(today.getFullYear(), 7, 24);
 
-        if(today <= lastDay) return 3; 
-        else return 0;
-      },
-    },
+    //     if(today <= lastDay) return 3; 
+    //     else return 0;
+    //   },
+    // },
     { 
       component: <SlackPage />,
       duration: 60,
