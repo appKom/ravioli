@@ -70,7 +70,7 @@ export function EventCard({ event }: { event: INewEvent & {attendance?: IEventAt
             isRegistrationEnded ? 'bg-gray-400 text-white' : indicatorColor
           )}
         >
-          {statusText}
+          {/* {statusText} */}
         </div>
       )}
 
