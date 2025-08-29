@@ -24,7 +24,6 @@ const response = await fetch(
   console.log("Full API response:", json);
 
   if (!response.ok || json.error) {
-    console.error("API returned error:", json.error);
     return null;
   }
 return json.result?.data ?? null;
