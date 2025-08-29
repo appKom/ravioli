@@ -1,6 +1,5 @@
 export const fetchEventsByStartDate = async() => {
   const response = await fetch(`/owapi/api/trpc/event.all`);
-  // console.log("Raw response:", response);
 
   if (response.ok) {
     const json = await response.json();
