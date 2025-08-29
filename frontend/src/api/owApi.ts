@@ -21,7 +21,6 @@ const response = await fetch(
 );
 
   const json = await response.json();
-  console.log("Full API response:", json);
 
   if (!response.ok || json.error) {
     return null;
