@@ -5,7 +5,7 @@ export const fetchEventsByStartDate = async() => {
     const json = await response.json();
     const items = json.result?.data?.json?.items ?? [];
 
-    return items.map((item: any) => ({
+    return items.map((item) => ({
       ...item.event, 
       attendanceId: item.attendance?.id ?? null,
       attendance: item.attendance ?? null,

@@ -14,12 +14,7 @@ export default defineConfig({
         target: 'https://rpc.online.ntnu.no',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/owapi/, ''),
-      },
-      '/api': {
-        target: 'https://rpc.online.ntnu.no',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
-      },
+      }
     },
   },
 });
