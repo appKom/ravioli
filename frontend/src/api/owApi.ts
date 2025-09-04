@@ -14,16 +14,3 @@ export const fetchEventsByStartDate = async() => {
   throw response;
 };
 
-export const fetchAttendanceByEventId = async (eventId: string) => {
-const response = await fetch(
-  `/owapi/api/trpc/event.get?input=${encodeURIComponent(JSON.stringify({ id: eventId }))}`
-);
-
-  const json = await response.json();
-
-  if (!response.ok || json.error) {
-    return null;
-  }
-return json.result?.data ?? null;
-};
-
