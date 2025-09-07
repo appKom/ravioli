@@ -6,21 +6,23 @@ interface AttendanceInfo {
 }
 
 export const calculateSeatsInfo = (attendanceEvent: IEventAttendanceDetails): AttendanceInfo => {
-  const { number_of_seats_taken = 0, max_capacity = 0 } = attendanceEvent || {};
-  const seatsLeft = max_capacity - number_of_seats_taken;
-  const percentageFilled = (number_of_seats_taken / max_capacity) * 100;
+  const { number_of_seats_taken = 0, capacity = 0 } = attendanceEvent || {};
+  const seatsLeft = capacity - number_of_seats_taken;
+  const percentageFilled = (number_of_seats_taken / capacity) * 100;
   return { seatsLeft, percentageFilled };
 };
 
 export const selectIndicatorColor = (
   percentageFilled: number,
-  startDate: string,
-  endDate: string
+  startDate: string | Date,
+  endDate: string | Date
 ): string => {
-  const currentDate = new Date().toISOString();
+  const now = new Date();
+  const start = new Date(startDate);
+  const end = new Date(endDate);
 
   // Check if event is ongoing
-  if (currentDate >= startDate && currentDate <= endDate) {
+  if (now >= start && now <= end) {
     return 'bg-amber-200 text-amber-800';
   }
 
