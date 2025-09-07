@@ -10,8 +10,9 @@ import { fetchAttendanceByEventId } from '../../api/owApi';
 import { calculateSeatsInfo, selectIndicatorColor, determineTimeBeforeRegistrationOpens, determineStatusText } from '../../lib/event';
 
 export function EventCard({ event }: { event: IEvent }) {
-  const { ingress, title, start_date, event_type, images } = event;
+  const { ingress, title, start_date, end_date, event_type, images } = event;
   const image = images[0];
+  const isOngoing = Date.parse(start_date) <= new Date().getTime() && new Date().getTime() <= Date.parse(end_date)
 
   const isRegistrationEvent = event.max_capacity !== null;
 
@@ -45,7 +46,8 @@ export function EventCard({ event }: { event: IEvent }) {
   const timeBeforeRegistrationOpens = determineTimeBeforeRegistrationOpens(registrationStart);
 
   return (
-    <BaseCard showOverflow>
+    <BaseCard showOverflow className={isOngoing ? "bg-gradient-to-t from-[#fdba74]/40 via-[#fdba74]/5 via-40% border-b-2 border-b-[#fdba74]" : ""} >
+
       {isRegistrationEvent && (
         <div
           className={`absolute inline-flex items-center justify-center py-0.5 px-2 text-sm font-bold text-white 
@@ -82,6 +84,7 @@ export function EventCard({ event }: { event: IEvent }) {
           )}
         </div>
       </div>
+      {/* <div className={`rounded-lg absolute w-2/3 m-auto h-1  -bottom-3 ${isOngoing ? "shadow-lg shadow-red-500 bg-red-500" : ""}`}></div> */}
     </BaseCard>
   );
 }
