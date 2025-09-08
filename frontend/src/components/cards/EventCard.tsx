@@ -5,10 +5,10 @@ import { formatWeekday, formatClock, formatDateName, isLongEvent, sameMonth } fr
 import { EVENT_TYPES, IEventAttendanceDetails, INewEvent } from '../../lib/types';
 import { BaseCard } from './BaseCard';
 import { removeOWFormatting } from '../../lib/text';
-import { calculateSeatsInfo, selectIndicatorColor, determineTimeBeforeRegistrationOpens, determineStatusText } from '../../lib/event';
-import clsx from 'clsx';
+/* import { calculateSeatsInfo, selectIndicatorColor, determineTimeBeforeRegistrationOpens, determineStatusText } from '../../lib/event';
+import clsx from 'clsx'; */
 
-export function EventCard({ event }: { event: INewEvent & {attendance?: IEventAttendanceDetails | null} }) {
+export function EventCard({ event }: { event: INewEvent & { attendance?: IEventAttendanceDetails | null } }) {
   const { title, start, end, imageUrl } = event;
 
   const isRegistrationEvent = event.max_capacity !== null;
@@ -28,11 +28,11 @@ export function EventCard({ event }: { event: INewEvent & {attendance?: IEventAt
   const eventTypeName = eventType?.displayName;
   const eventColor = eventType?.colorName;
 
-  const { seatsLeft, percentageFilled } = attendanceData
-  ? calculateSeatsInfo(attendanceData)  
-  : { seatsLeft: 0, percentageFilled: 0 };
+  /* const { seatsLeft, percentageFilled } = attendanceData
+    ? calculateSeatsInfo(attendanceData)
+    : { seatsLeft: 0, percentageFilled: 0 };
 
-  const indicatorColor = selectIndicatorColor(  
+  const indicatorColor = selectIndicatorColor(
     percentageFilled,
     String(start),
     String(end)
@@ -41,38 +41,38 @@ export function EventCard({ event }: { event: INewEvent & {attendance?: IEventAt
   const registrationEnd = new Date(attendanceData?.registerEnd ?? 0);
   const registrationStart = new Date(attendanceData?.registerStart ?? 0);
   const isRegistrationEnded = new Date() > registrationEnd;
-  const timeBeforeRegistrationOpens = determineTimeBeforeRegistrationOpens(registrationStart); 
+  const timeBeforeRegistrationOpens = determineTimeBeforeRegistrationOpens(registrationStart); */
   const isLongDurationEvent = isLongEvent(new Date(start), new Date(end));
 
   const dateBadgeText = isLongDurationEvent
-  ? sameMonth(start, end)
-    ? `Fra ${formatDateName(start, false)} til ${formatDateName(end)}` // Start and end date in same month
-    : `Fra ${formatDateName(start)} til ${formatDateName(end)}` // Start and end date in different months
-  : `${formatWeekday(start)} ${formatDateName(start)}, ${formatClock(start)}`; // Single day event
+    ? sameMonth(start, end)
+      ? `Fra ${formatDateName(start, false)} til ${formatDateName(end)}` // Start and end date in same month
+      : `Fra ${formatDateName(start)} til ${formatDateName(end)}` // Start and end date in different months
+    : `${formatWeekday(start)} ${formatDateName(start)}, ${formatClock(start)}`; // Single day event
 
-  const statusText = determineStatusText( //todo
+  /* const statusText = determineStatusText( //todo
     isRegistrationEnded,
     timeBeforeRegistrationOpens,
     seatsLeft,
     attendanceData?.number_on_waitlist ?? 0,
     start,
     end,
-  );
+  ); */
 
   const reservedCount = attendanceData?.attendees.filter(a => a.reserved).length ?? 0;
 
   return (
     <BaseCard showOverflow>
-      {statusText && (
+      {/* {statusText && (
         <div
-          className= {clsx(
+          className={clsx(
             'absolute inline-flex items-center justify-center py-0.5 px-2 text-sm font-bold border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900',
             isRegistrationEnded ? 'bg-gray-400 text-white' : indicatorColor
           )}
         >
-          {/* {statusText} */}
+          {statusText}
         </div>
-      )}
+      )} */}
 
       <div className='flex justify-center w-full h-60 border-b rounded-t-lg border-gray-200 dark:border-gray-700'>
         {imageUrl ? (
