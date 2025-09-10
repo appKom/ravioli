@@ -1,20 +1,24 @@
 import { useState, useEffect, ReactElement } from "react";
 import { Header } from "../header/Header";
 import { DarkModeProvider } from "../utils/DarkModeProvider";
-import { OnlineAppBlastPage } from "./OnlineAppBlastPage";
+// import { OnlineAppBlastPage } from "./OnlineAppBlastPage";
 import { ChristmasPage } from "./ChristmasPage";
 import { EventsPage } from "./EventsPage";
 import { NapkomPage } from "./Napkom";
-import { BratPage } from "./BratPage";
-import { PodcastPage } from "./PodcastPage";
+// import { BratPage } from "./BratPage";
+// import { PodcastPage } from "./PodcastPage";
 import { MovemberPage } from "./MovemberPage";
 import { Kunnskapkom } from "./Kunnskapkom";
 import { SlackPage } from "./SlackPage";
-import { EasterPage } from "./EasterPage";
+/* import { EasterPage } from "./EasterPage"; */
 import clsx from "clsx";
 import { RavioliPage } from "./RavioliPage";
-import countdownToEaster from "../../lib/daysUntilEaster";
-import { CharityPage } from "./CharityPage";
+/* import countdownToEaster from "../../lib/daysUntilEaster"; */
+import { JubkomPage } from "./JubkomPage";
+/* import { CharityPage } from "./CharityPage"; */
+import AprilFoolsFont from "../utils/AprilFoolsFont";
+// import { VideoPage } from "./VideoPage";
+// import { OpptakPage } from "./OpptakPage";
 
 interface PageAbstract {
   component: ReactElement;
@@ -49,10 +53,21 @@ export const MainPage = () => {
       duration: 60,
       priority: () => 4,
     },
-    {
+    // {
+    //   component: <OpptakPage />,
+    //   duration: 40,
+    //   priority: () => {
+    //     const today = new Date();
+    //     const lastDay = new Date(today.getFullYear(), 7, 24);
+
+    //     if(today <= lastDay) return 3; 
+    //     else return 0;
+    //   },
+    // },
+    { 
       component: <SlackPage />,
       duration: 60,
-      priority: () => 3,
+      priority: () => 2.5,
     },
     /* {
       component: <VideoPage pageDuration={60} />,
@@ -72,17 +87,17 @@ export const MainPage = () => {
       },
       fullScreen: true,
     },
-    {
-      component: <OnlineAppBlastPage />,
-      duration: 30,
-      priority: () => 1.5,
-    },
-    {
-      component: <BratPage />,
-      duration: 20,
-      priority: () => 0.02,
-      fullScreen: true,
-    },
+    // {
+    //   component: <OnlineAppBlastPage />,
+    //   duration: 30,
+    //   priority: () => 1.2,
+    // },
+    // {
+    //   component: <BratPage />,
+    //   duration: 20,
+    //   priority: () => 0.02,
+    //   fullScreen: true,
+    // },
     {
       component: <NapkomPage />,
       duration: 20,
@@ -96,11 +111,11 @@ export const MainPage = () => {
       },
       fullScreen: true,
     },
-    {
-      component: <PodcastPage />,
-      duration: 30,
-      priority: () => 1.5,
-    },
+    // {
+    //   component: <PodcastPage />,
+    //   duration: 30,
+    //   priority: () => 1.2,
+    // },
     {
       component: <MovemberPage />,
       duration: 20,
@@ -123,10 +138,10 @@ export const MainPage = () => {
     {
       component: <RavioliPage />,
       duration: 20,
-      priority: () => 0.01,
+      priority: () => 0.3,
       fullScreen: true,
     },
-    {
+    /* {
       component: <EasterPage />,
       duration: 20,
       priority: () => {
@@ -134,8 +149,14 @@ export const MainPage = () => {
         else return 0;
       },
       fullScreen: true,
-    },
+    }, */
     {
+      component: <JubkomPage />,
+      duration: 30,
+      priority: () => 0.7,
+      fullScreen: true,
+    },
+    /* {
       component: <CharityPage />,
       duration: 30,
       fullScreen: true,
@@ -146,7 +167,7 @@ export const MainPage = () => {
         if (today <= seasonEnd) return 3;
         else return 0;
       },
-    },
+    }, */
   ];
 
   const pages = preparePageSpecifications(pageSpecifications);
@@ -224,6 +245,7 @@ export const MainPage = () => {
 
   return (
     <DarkModeProvider>
+      <AprilFoolsFont />
       <div className={clsx(
         "overflow-hidden dark:bg-[#111827] h-screen flex flex-col",
         import.meta.env.VITE_NODE_ENV !== "development" && "cursor-none"

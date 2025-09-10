@@ -1,4 +1,4 @@
-import { Clock, MapPin, Users } from "lucide-react"
+import { Clock, LinkIcon, MapPin, Users } from "lucide-react"
 import { fetchBids } from "../../api/onLoveApi";
 import { useQuery } from "@tanstack/react-query";
 import { Oval } from 'react-loader-spinner'
@@ -122,6 +122,17 @@ export const CharityPage = () => {
             </div>
           )
         }
+
+        {/* Onlove.no blæst*/}
+        <div className="absolute left-[1300px] top-[600px] z-20 -rotate-3">
+          <div className="bg-white/5 backdrop-blur-sm p-8 rounded-3xl border border-white/10">
+            <h2 className="text-4xl font-bold flex items-center gap-2">
+              <LinkIcon className="w-8 h-8 text-online-yellow mr-1.5" />
+              Sjekk ut <span className="text-blue-400">onlove.no</span>
+              <span className="text-online-yellow -ml-1.5">!</span>
+            </h2>
+          </div>
+        </div>
 
         {/* Event Details - Offset from grid */}
         <div className="absolute left-[1000px] top-[675px] z-10 rotate-3">
