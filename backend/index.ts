@@ -4,6 +4,7 @@ import cors from "cors";
 import cronHandler from "./src/cronJob";
 import { query, validationResult } from "express-validator";
 import { toCamelCaseKeys } from "./src/utils";
+import { fetchEventsByStartDate } from "./src/monoweb";
 
 const pool = new Pool({
   connectionString: process.env.SUPABASE_CONNECTION_STRING,
@@ -118,5 +119,15 @@ app.get(
     }
   }
 );
+
+app.get("/events", async (req, res) => {
+  try {
+    const events = await fetchEventsByStartDate();
+    res.json(events);
+  } catch (err) {
+    console.error("Error fetching events:", err);
+    res.status(500).json({ error: "Failed to fetch events" });
+  }
+});
 
 export default app;
