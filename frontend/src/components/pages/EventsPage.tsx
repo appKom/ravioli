@@ -4,23 +4,16 @@ import { EventCard } from "../cards/EventCard";
 import { Loading } from "../utils/Loading";
 import { Error } from "../utils/Error";
 import { INewEvent } from "../../lib/types";
-import { useEffect } from "react";
 
 const REFETCH_INTERVAL_MINUTES = 5; // how often to refetch events from Online API
 const NUMBER_OF_EVENTS = 8; // how many events to display
 
 export const EventsPage = () => {
-  const { isLoading, isError, data, error } = useQuery({
+  const { isLoading, isError, data } = useQuery({
     queryKey: ["events"],
     queryFn: () => fetchEventsByStartDate(),
     refetchInterval: 1000 * 60 * REFETCH_INTERVAL_MINUTES,
   });
-
-  useEffect(() => {
-    if (error) {
-      console.error("Error fetching events:", error);
-    }
-  }, [error]);
 
   if (isLoading) return <Loading text="Henter siste arrangementer fra OW..." />;
   if (isError) return <Error />;
