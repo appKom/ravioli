@@ -4,6 +4,7 @@ module.exports = {
   theme: {
     fontFamily: {
       'cardo': ['cardo', 'sans-serif'],
+      'glass': ['glass', 'monospace'],
     },
     extend: {
       colors: {
@@ -15,6 +16,9 @@ module.exports = {
       animation: {
         swing: 'swing 5s ease-in-out infinite',
         driftOff: 'driftOff 6s linear infinite',
+        flicker: 'flicker 0.15s infinite',
+        scan: 'scan 0.2s linear infinite',
+        blink: 'blink 2s infinite',
       },
       keyframes: {
         swing: {
@@ -26,9 +30,24 @@ module.exports = {
           '10%': { opacity: '1' },
           '100%': { transform: 'translate(400%, -200%) scale(0.75) rotate(-10deg)', opacity: '0' },
         },
+        blink: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0' },
+        },
+        flicker: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.9' },
+        },
+        scan: {
+          '0%': { backgroundPosition: '0 0' },
+          '100%': { backgroundPosition: '0 10px' },
+        },
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+      },
+      boxShadow: {
+        glow: '0 0 10px 5px rgba(249, 183, 89, 0.7)',
       },
     },
   },
