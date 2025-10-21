@@ -37,7 +37,7 @@
     "react-qr-code": "^2.0.18",
     "react-router-dom": "^6.27.0",
     "react-snowfall": "^2.1.1",
-    "vite": "^5.4.20",
+    "vite": "^5.4.21",
     "vite-plugin-svgr": "^4.2.0",
     "vite-tsconfig-paths": "^4.3.2",
     "web-vitals": "^2.1.4"
